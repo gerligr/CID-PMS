@@ -1,0 +1,62 @@
+PERFORMANCE MANAGEMENT SYSTEM
+
+USER STORIES
+
+As employee I would like to login/logout from system.
+
+As Admin I want to:
+
+add an User and assign him/her a role
+Deactivate User 
+
+As Employee I want to:
+
+Check my sales in general and additional sales level (eur/hrs, pax/hrs, meals/pax)
+Read team leaders suggestions about improving sales 
+Read customers feedback and mark it read
+Give a comment about customers feedback
+See the appointment scheduled by Team Lead
+Approve the appointment
+Reject the scheduled appointment and give the reason (comment) of rejection, send notification to Team Lead 
+See the agreement and goals made at the appointment considering sales and customer service
+Take product knowledge tests and see the score
+
+
+As Team Lead I want to:
+
+Check my team sales in general 
+Check my team sales in additional sales level
+Give an employee suggestions how to improve his/her sales
+Read positive and negative feedback 
+Forward the feedback to the right employee (id of team leader will be saved)
+Mark the feedback to be handled
+Schedule appointments with Employee and send a notification to e-mail
+See the rejection of appointment and comment made by Employee
+Add the agreement and goals made at the appointment with Employee considering sales and customer service
+See the appointment scheduled by Manager
+Approve the appointment
+Reject the scheduled appointment and give the reason (comment) of rejection, send notification to Manager
+See employee product knowledge test scores
+Take product knowledge test and see the score
+
+
+As Manager I want to:
+
+Check my department sales in general and in additional sales level 
+Find the suggestions made by team leaders (about improving employee sales)
+See the statistics about forwarded customers feedback by team leader
+See the comments made by Employees about customers feedback
+Schedule appointment with Team Lead and send a notification to e-mail
+See the rejection of appointment and comment made by Team Lead
+Check Employees and Team Leads product knowledge test scores and complition
+
+
+As Feedback Department Specialist I want to:
+
+Add positive and negative feedback to be seen by Team Lead and Manager
+
+As Sales Support Specialist I want to:
+
+Add product knowledge tests to Employee, Team Lead and Manager (optional)
+
+
