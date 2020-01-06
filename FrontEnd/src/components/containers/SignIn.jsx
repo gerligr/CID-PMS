@@ -26,6 +26,9 @@ axios.post(echoPostUrl, data, options)
     console.log(exception);
 }); */
 
+
+//when this SignIn content is shown, then sideBar is not visible
+
 export default class SignIn extends React.Component{
 
     constructor(props) {

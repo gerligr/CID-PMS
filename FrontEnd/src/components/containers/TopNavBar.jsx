@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class TopNavBar extends React.Component{
 
     constructor(props) {
@@ -11,10 +12,10 @@ export default class TopNavBar extends React.Component{
             <nav className="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div className="container-fluid">
                     <div className="navbar-wrapper">
-                        <a className="navbar-brand" href="#pablo">XX</a>
+                        <a className="navbar-brand" href="#pablo"></a>
                     </div>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span clasName="sr-only">Toggle navigation</span>
+                        <span className="sr-only">Toggle navigation</span>
                         <span className="navbar-toggler-icon icon-bar"></span>
                         <span className="navbar-toggler-icon icon-bar"></span>
                         <span className="navbar-toggler-icon icon-bar"></span>
@@ -22,7 +23,7 @@ export default class TopNavBar extends React.Component{
                     <div className="collapse navbar-collapse justify-content-end">
                         <form className="navbar-form">
                             <div className="input-group no-border">
-                                <input type="text" value="" className="form-control" placeholder="Search..." />
+                                <input type="text" className="form-control" placeholder="Search..." />
                                 <button type="submit" className="btn btn-white btn-round btn-just-icon">
                                     <i className="material-icons">search</i>
                                     <div className="ripple-container"></div>

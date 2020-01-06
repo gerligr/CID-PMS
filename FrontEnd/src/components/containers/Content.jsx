@@ -2,19 +2,21 @@ import React from 'react';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-export default class Content extends React.Component{
+
+export default class Content extends React.Component{    
 
     constructor(props) {
-        super(props);
-    }
+        super(props);       
+    }     
 
-    render() {
+    
+    render() {         
         return (
             <div className="content">
                 <div className="container-fluid">
                     {/* <SignIn /> */}
-                    <SignUp />
-                    
+                    {/* <SignUp /> */}              
+                                  
                 </div>
             </div >
         );
