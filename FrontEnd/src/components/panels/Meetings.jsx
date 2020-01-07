@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class Notification extends React.Component{    
+export default class Meetings extends React.Component{    
 
     constructor(props) {
         super(props);       
@@ -10,7 +10,7 @@ export default class Notification extends React.Component{
     
     render() {         
         return (
-            <div>Notification</div>
+            <div>Meetings</div>
             
         );
 

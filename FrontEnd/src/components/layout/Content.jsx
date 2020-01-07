@@ -1,6 +1,6 @@
 import React from 'react';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import SignIn from '../panels/SignIn';
+import SignUp from '../panels/SignUp';
 
 
 export default class Content extends React.Component{    

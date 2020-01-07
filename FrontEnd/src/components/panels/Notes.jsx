@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class Tables extends React.Component{    
+export default class Notes extends React.Component{    
 
     constructor(props) {
         super(props);       
@@ -10,7 +10,7 @@ export default class Tables extends React.Component{
     
     render() {         
         return (
-            <div>Tables</div>
+            <div>Notes</div>
             
         );
 

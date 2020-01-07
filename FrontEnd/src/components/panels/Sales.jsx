@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class Library extends React.Component{    
+export default class Sales extends React.Component{    
 
     constructor(props) {
         super(props);       
@@ -10,7 +10,7 @@ export default class Library extends React.Component{
     
     render() {         
         return (
-            <div>Library</div>
+            <div>Sales</div>
             
         );
 

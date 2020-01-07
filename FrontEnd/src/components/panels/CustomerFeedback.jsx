@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class Location extends React.Component{    
+export default class CustomerFeedback extends React.Component{    
 
     constructor(props) {
         super(props);       
@@ -10,7 +10,7 @@ export default class Location extends React.Component{
     
     render() {         
         return (
-            <div>Location</div>
+            <div>Customer Feedback</div>
             
         );
 

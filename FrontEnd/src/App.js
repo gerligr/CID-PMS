@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MasterLayout from './components/pages/MasterLayout.jsx';
+import MasterLayout from './components/layout/MasterLayout.jsx';
 import {BrowserRouter} from 'react-router-dom';
 
 function App() {
