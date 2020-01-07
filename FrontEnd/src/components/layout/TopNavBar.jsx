@@ -21,15 +21,6 @@ export default class TopNavBar extends React.Component{
                         <span className="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div className="collapse navbar-collapse justify-content-end">
-                        <form className="navbar-form">
-                            <div className="input-group no-border">
-                                <input type="text" className="form-control" placeholder="Search..." />
-                                <button type="submit" className="btn btn-white btn-round btn-just-icon">
-                                    <i className="material-icons">search</i>
-                                    <div className="ripple-container"></div>
-                                </button>
-                            </div>
-                        </form>
                         <ul className="navbar-nav">
                         <li className="nav-item">
                             <a className="nav-link" href="#pablo">

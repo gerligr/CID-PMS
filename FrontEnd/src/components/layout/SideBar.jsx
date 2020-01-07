@@ -9,10 +9,10 @@ export default class SideBar extends React.Component{
 
     render() {
         return (
-            <div className="sidebar" data-color="purple" data-background-color="white" data-image=".../assets/img/sidebar-1.jpg">
+            <div className="sidebar" data-color="purple" data-background-color="white" data-image="media/sidebar-2.jpg">
                 <div className="logo">
                     <a href="#" className="simple-text logo-normal">                        
-                        <span><img src=".../public/assets/img/logo.png" alt="Company logo"/></span>                         
+                        <span><img src="media/logo2.png" alt="Company logo" height="100"/></span>                         
                     </a>
                 </div>
                 <div className="sidebar-wrapper">
