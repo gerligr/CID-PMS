@@ -12,7 +12,11 @@ export default class SideBar extends React.Component{
             <div className="sidebar" data-color="purple" data-background-color="white" data-image="media/sidebar-2.jpg">
                 <div className="logo">
                     <a href="#" className="simple-text logo-normal">                        
-                        <span><img src="media/logo2.png" alt="Company logo" height="100"/></span>                         
+                        <span>
+                            <Link to="/dashboard" className="nav-link">
+                                <img src="media/logo2.png" alt="Company logo" height="100" />
+                            </Link>
+                        </span>                         
                     </a>
                 </div>
                 <div className="sidebar-wrapper">
@@ -56,7 +60,7 @@ export default class SideBar extends React.Component{
                         <li className="nav-item  ">
                             <Link to="/signupuser" className="nav-link">
                                 <i className="material-icons">person_add</i>
-                                <p>Sign Up Users</p>
+                                <p>Users Sign Up</p>
                             </Link>
                         </li>                        
                         <li className="nav-item  ">
