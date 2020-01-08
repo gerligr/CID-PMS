@@ -15,7 +15,7 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 
-/* import './TableToolkitPaginationPage.css'; */
+/* import './SalesPage.css';  */
 
 import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone  } from 'react-bootstrap-table2-paginator';
 
@@ -38,43 +38,75 @@ const salesDetails = (e)=> {
 
 const formatProductDetailsButtonCell =(cell, row)=>{  
     let clickHandler=salesDetails;
-    var emptyContent = React.createElement('i',{id:row.id,onClick:clickHandler});			
-    var aBtn = React.createElement('a',{id:row.id,className:"btnNtfcdDetails btn-action glyphicons eye_open btn-success", onClick:clickHandler}, emptyContent);
+    var iTag = React.createElement('i',{id:row.id,onClick:clickHandler,className:'material-icons'},'comment');    		
+    var aBtn = React.createElement('a',{id:row.id,className:"nav-link", onClick:clickHandler}, iTag);
     return aBtn;	
 }
 
 const columns = [{
     dataField: 'id',
-    text: 'Sales ID',
-    sort: true
+    text: 'Sales ID',    
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {
     dataField: 'date',
     text: 'Date',
-    sort: true
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {
     dataField: 'last_name',
     text: 'Last Name',
-    sort: true
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {  
     dataField: 'team_code',
     text: 'Team Code',
-    sort: true
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {  
     dataField: 'eur_per_h',
     text: 'Eur/h',
-    sort: true
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {  
     dataField: 'pax_per_h',
     text: 'Pax/h',
-    sort: true
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {    
     dataField: 'eur_per_pax',
     text: 'Eur/pax',
-    sort: true
+    sort: true,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }, {  
     dataField: 'action',    
     text:'Action',
-    formatter: formatProductDetailsButtonCell
+    formatter: formatProductDetailsButtonCell, formatProductDetailsButtonCell,
+    headerStyle: {
+      color: 'purple',
+      fontWeight: 500  
+    }  
   }];
 
   const customTotal = (from, to, size) => (
@@ -110,7 +142,7 @@ const columns = [{
     }] // A numeric array is also available. the purpose of above example is custom the text
   };
 
-export default class SalesPage extends React.Component{  
+  export default class SalesPage extends React.Component{  
     
     constructor(props) {
         super(props);     
@@ -125,7 +157,7 @@ export default class SalesPage extends React.Component{
 
               <ToolkitProvider
                 keyField='id' 
-                data={salesData} 
+                data={salesData}               
                 columns={columns}
                 search 
               >
@@ -148,7 +180,7 @@ export default class SalesPage extends React.Component{
                         <div className="card">
                           <div className="card-header card-header-primary">
                             <h4 className="card-title ">Daily Sales</h4>
-                            <p className="card-category"> Here is Your daily sales </p>
+                            {/* <p className="card-category"> Here is Your daily sales </p> */}
                           </div>     
                           <div className="card-body">
                             <div className="table-responsive">
@@ -156,7 +188,7 @@ export default class SalesPage extends React.Component{
                                 striped
                                 hover
                                 condensed                                        
-                                selectRow={ selectRow }
+                                selectRow={ selectRow }                                
                                 { ...toolkitprops.baseProps }
                                 { ...paginationTableProps }
                               />
@@ -169,9 +201,17 @@ export default class SalesPage extends React.Component{
                 }
 
               </ToolkitProvider>
-                 
-              <SizePerPageDropdownStandalone { ...paginationProps } />
-              <PaginationListStandalone { ...paginationProps } /> 
+
+              <div className="row">
+                <div className="col-sm-10">
+                  <SizePerPageDropdownStandalone { ...paginationProps } />
+                </div>
+                <div className="col-sm-2 pagination">
+                  <PaginationListStandalone { ...paginationProps } />
+                </div>     
+                
+              </div>  
+               
             </div>
           );
         }
