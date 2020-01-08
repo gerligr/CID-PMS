@@ -52,6 +52,12 @@ export default class SideBar extends React.Component{
                                 <i className="material-icons">person</i>
                                 <p>User Profile</p>
                             </Link>
+                        </li>  
+                        <li className="nav-item  ">
+                            <Link to="/signupuser" className="nav-link">
+                                <i className="material-icons">person_add</i>
+                                <p>Sign Up Users</p>
+                            </Link>
                         </li>                        
                         <li className="nav-item  ">
                             <Link to="/support" className="nav-link">

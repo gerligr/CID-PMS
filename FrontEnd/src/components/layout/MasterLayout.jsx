@@ -7,7 +7,8 @@ import CustomerFeedback from '../panels/CustomerFeedback';
 import SalesPage from '../pages/SalesPage.jsx';
 import Meetings from '../panels/Meetings';
 import Notes from '../panels/Notes';
-import UserProfile from '../panels/UserProfile';
+import UserProfilePage from '../pages/UserProfilePage.jsx';
+import SignUpUserPage from '../pages/SignUpUserPage.jsx';
 import Support from '../panels/Support';
 
  
@@ -31,7 +32,8 @@ export default class MasterLayout extends React.Component{
                                 <Route path="/sales" component={SalesPage} />
                                 <Route path="/meetings" component={Meetings} />
                                 <Route path="/notes" component={Notes} />
-                                <Route path="/userprofile" component={UserProfile} />                               
+                                <Route path="/userprofile" component={UserProfilePage} />  
+                                <Route path="/signupuser" component={SignUpUserPage} />
                                 <Route path="/support" component={Support} />                                
                             </Switch>
                         </div>
