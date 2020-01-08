@@ -1,0 +1,1 @@
+export const userDetails = {"id":1,"department":"EE","team_code":3,"position":2,"first_name":"Eddi","last_name":"Lanfear","username":"elanfear0@gnu.org","password":"7w02p9orb4E"};
