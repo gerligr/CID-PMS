@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './SignUpUserPage.css';
 
 /* import httpsProxyAgent from 'https-proxy-agent'; */
 /* const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80'); */
@@ -62,7 +63,7 @@ export default class SignUpUserPage extends React.Component{
             <div className="row">
                 <div className="col-md-8">
                 <div className="card">
-                    <div className="card-header card-header-primary">
+                    <div className="card-header card-header-success">
                     <h4 className="card-title">Add User Information</h4>
                     <p className="card-category"></p>
                     </div>
@@ -116,7 +117,7 @@ export default class SignUpUserPage extends React.Component{
                                 </div>
                             </div>
                         </div>                        
-                        <button type="submit" className="btn btn-primary pull-right" onClick={this.sendData}>Save</button>
+                        <button type="submit" className="btn btn-success pull-right" onClick={this.sendData}>Save</button>
                         <div className="clearfix"></div>
                     </form>
                     </div>

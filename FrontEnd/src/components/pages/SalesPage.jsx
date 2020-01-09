@@ -48,7 +48,7 @@ const columns = [{
     text: 'Sales ID',    
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {
@@ -56,7 +56,7 @@ const columns = [{
     text: 'Date',
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {
@@ -64,7 +64,7 @@ const columns = [{
     text: 'Last Name',
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {  
@@ -72,7 +72,7 @@ const columns = [{
     text: 'Team Code',
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {  
@@ -80,7 +80,7 @@ const columns = [{
     text: 'Eur/h',
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {  
@@ -88,7 +88,7 @@ const columns = [{
     text: 'Pax/h',
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {    
@@ -96,15 +96,15 @@ const columns = [{
     text: 'Eur/pax',
     sort: true,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }, {  
     dataField: 'action',    
     text:'Action',
-    formatter: formatProductDetailsButtonCell, formatProductDetailsButtonCell,
+    formatter: formatProductDetailsButtonCell,
     headerStyle: {
-      color: 'purple',
+      color: 'green',
       fontWeight: 500  
     }  
   }];
@@ -114,9 +114,38 @@ const columns = [{
       Showing {from} to {to} of {size} Results
     </span>
   );
+  
+  const pageButtonRenderer = ({
+    page,
+    active,    
+    onPageChange
+  }) => {
+    const handleClick = (e) => {
+      e.preventDefault();
+      onPageChange(page);
+    };
+    const activeStyle = {};
+    if (active) {
+      activeStyle.backgroundColor = 'green';
+      activeStyle.color = 'white';
+    } else {
+      activeStyle.backgroundColor = '';
+      activeStyle.color = 'green';
+    }
+    if (typeof page === 'string') {
+      activeStyle.backgroundColor = '';
+      activeStyle.color = 'green';
+    }
+    return (
+      <li className="page-link">
+        <a href="#" onClick={ handleClick } style={ activeStyle }>{ page }</a>
+      </li>
+    );
+  };
 
   const paginationConfig = {
     custom: true,
+    pageButtonRenderer,
     paginationSize: 4,
     pageStartIndex: 1,
     firstPageText: 'First',
@@ -128,7 +157,7 @@ const columns = [{
     firstPageTitle: 'Next page',
     lastPageTitle: 'Last page',
     showTotal: true,
-    paginationTotalRenderer: customTotal,
+    paginationTotalRenderer: customTotal, 
     sizePerPageList: [{
       text: '10', value: 10
     }, {
@@ -139,7 +168,7 @@ const columns = [{
         text: '100', value: 100
     }, {
       text: 'All', value: salesData.length
-    }] // A numeric array is also available. the purpose of above example is custom the text
+    }] 
   };
 
   export default class SalesPage extends React.Component{  
@@ -178,7 +207,7 @@ const columns = [{
 
                       <div className="col-md-12">
                         <div className="card">
-                          <div className="card-header card-header-primary">
+                          <div className="card-header card-header-success">
                             <h4 className="card-title ">Daily Sales</h4>
                             {/* <p className="card-category"> Here is Your daily sales </p> */}
                           </div>     
@@ -202,7 +231,7 @@ const columns = [{
 
               </ToolkitProvider>
 
-              <div className="row">
+              {<div className="row">
                 <div className="col-sm-10">
                   <SizePerPageDropdownStandalone { ...paginationProps } />
                 </div>
@@ -210,7 +239,7 @@ const columns = [{
                   <PaginationListStandalone { ...paginationProps } />
                 </div>     
                 
-              </div>  
+              </div>  }
                
             </div>
           );

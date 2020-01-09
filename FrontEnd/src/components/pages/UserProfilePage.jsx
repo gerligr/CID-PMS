@@ -84,7 +84,7 @@ export default class UserProfilePage extends React.Component{
             <div className="row">
                 <div className="col-md-8">
                 <div className="card">
-                    <div className="card-header card-header-primary">
+                    <div className="card-header card-header-success">
                     <h4 className="card-title">Employee Profile</h4>
                     <p className="card-category"></p>
                     </div>
@@ -138,7 +138,7 @@ export default class UserProfilePage extends React.Component{
                                 </div>
                             </div>
                         </div>                        
-                        <button type="submit" className="btn btn-primary pull-right" onClick={this.sendData}>Save Changes</button>
+                        <button type="submit" className="btn btn-success pull-right" onClick={this.sendData}>Save Changes</button>
                         <div className="clearfix"></div>
                     </form>
                     </div>
