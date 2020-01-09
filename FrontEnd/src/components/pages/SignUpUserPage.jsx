@@ -2,9 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import './SignUpUserPage.css';
 
-/* import httpsProxyAgent from 'https-proxy-agent'; */
-/* const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80'); */
-
 const mockoonUrl="http://localhost:7000/cid/users/create";
 
 const options = {

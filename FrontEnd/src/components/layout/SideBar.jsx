@@ -33,20 +33,20 @@ export default class SideBar extends React.Component{
                             <Link to="/sales" className="nav-link">
                                 <i className="material-icons">content_paste</i>
                                 <p>Sales</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item  ">
-                            <Link to="/meetings" className="nav-link">
-                                <i className="material-icons">schedule</i>
-                                <p>Meetings</p>
-                            </Link>
+                            </Link>                        
                         </li>
                         <li className="nav-item  ">
                             <Link to="/hints" className="nav-link">
                                 <i className="material-icons">trending_up</i>
                                 <p>Hints for Growth</p>
                             </Link>
-                        </li>                        
+                        </li>    
+                        <li className="nav-item  ">
+                            <Link to="/meetings" className="nav-link">
+                                <i className="material-icons">schedule</i>
+                                <p>Meetings</p>
+                            </Link>
+                        </li>                    
                         <li className="nav-item  ">
                             <Link to="/userprofile" className="nav-link">
                                 <i className="material-icons">person</i>
@@ -57,6 +57,12 @@ export default class SideBar extends React.Component{
                             <Link to="/signupuser" className="nav-link">
                                 <i className="material-icons">person_add</i>
                                 <p>Users Sign Up</p>
+                            </Link>
+                        </li>
+                        <li className="nav-item  ">
+                            <Link to="/signinuser" className="nav-link">
+                                <i className="material-icons">perm_identity</i>
+                                <p>User Sign In</p>
                             </Link>
                         </li>                        
                         <li className="nav-item  ">

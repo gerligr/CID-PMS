@@ -9,6 +9,7 @@ import Meetings from '../panels/Meetings';
 import HintsForGrowthPage from '../pages/HintsForGrowth.jsx';
 import UserProfilePage from '../pages/UserProfilePage.jsx';
 import SignUpUserPage from '../pages/SignUpUserPage.jsx';
+import SignInUserPage from '../pages/SignInUserPage.jsx';
 import Support from '../panels/Support';
 
  
@@ -34,6 +35,7 @@ export default class MasterLayout extends React.Component{
                                 <Route path="/hints" component={HintsForGrowthPage} />
                                 <Route path="/userprofile" component={UserProfilePage} />  
                                 <Route path="/signupuser" component={SignUpUserPage} />
+                                <Route path="/signinuser" component={SignInUserPage} /> 
                                 <Route path="/support" component={Support} />                                
                             </Switch>
                         </div>
