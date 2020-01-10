@@ -1,13 +1,6 @@
-/**
- * See for docs:
- * https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/getting-started.html
- * https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook
- * 
- * Toolkit additional component
- * https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/search-props.html
- */
-
 import React from 'react';
+import axios from 'axios';
+import httpsProxyAgent from 'https-proxy-agent';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -19,7 +12,13 @@ import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.c
 
 import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone  } from 'react-bootstrap-table2-paginator';
 
-import {salesData} from '../data/salesData.js';
+const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
+
+const mockoonUrlGet="http://localhost:7000/cid/sales/get";
+
+const config = {
+  httpsAgent: agent
+};
 
 const {SearchBar} = Search;
 
@@ -29,11 +28,9 @@ const selectRow = {
     selected: [1]
 };
 
-const salesDetails = (e)=> {   
-    //console.log(e.target);
+const salesDetails = (e)=> {  
     var { id} = e.target;
-    console.log("See Details for Id: " + id);
-    //hashHistory.push('/contacts/details/'+id);
+    console.log("See Details for Id: " + id);    
 };
 
 const formatProductDetailsButtonCell =(cell, row)=>{  
@@ -60,7 +57,7 @@ const columns = [{
       fontWeight: 500  
     }  
   }, {
-    dataField: 'last_name',
+    dataField: 'lastname',
     text: 'Last Name',
     sort: true,
     headerStyle: {
@@ -68,7 +65,7 @@ const columns = [{
       fontWeight: 500  
     }  
   }, {  
-    dataField: 'team_code',
+    dataField: 'team',
     text: 'Team Code',
     sort: true,
     headerStyle: {
@@ -94,6 +91,14 @@ const columns = [{
   }, {    
     dataField: 'eur_per_pax',
     text: 'Eur/pax',
+    sort: true,
+    headerStyle: {
+      color: 'green',
+      fontWeight: 500  
+    }  
+  }, {    
+    dataField: 'calls_per_h',
+    text: 'Calls/h',
     sort: true,
     headerStyle: {
       color: 'green',
@@ -143,42 +148,63 @@ const columns = [{
     );
   };
 
-  const paginationConfig = {
-    custom: true,
-    pageButtonRenderer,
-    paginationSize: 4,
-    pageStartIndex: 1,
-    firstPageText: 'First',
-    prePageText: 'Back',
-    nextPageText: 'Next',
-    lastPageText: 'Last',
-    nextPageTitle: 'First page',
-    prePageTitle: 'Pre page',
-    firstPageTitle: 'Next page',
-    lastPageTitle: 'Last page',
-    showTotal: true,
-    paginationTotalRenderer: customTotal, 
-    sizePerPageList: [{
-      text: '10', value: 10
-    }, {
-      text: '25', value: 25
-    }, {
-        text: '50', value: 50
-    }, {
-        text: '100', value: 100
-    }, {
-      text: 'All', value: salesData.length
-    }] 
-  };
+ 
 
   export default class SalesPage extends React.Component{  
     
     constructor(props) {
-        super(props);     
+        super(props);        
+        this.state= {
+          data: []        
+      }
+        this.getData = this.getData.bind(this);        
     }
 
-    render() {         
-        
+    componentDidMount() {
+      this.getData();
+    }
+
+    getData() {
+      axios.get(mockoonUrlGet, config)
+        .then((response) => {         
+          this.setState({data:response.data});
+        }).catch((exception) => {
+          console.log(exception);
+        });
+    
+    
+  };
+
+    render() {  
+
+      const paginationConfig = {
+        custom: true,
+        pageButtonRenderer,
+        paginationSize: 4,
+        pageStartIndex: 1,
+        firstPageText: 'First',
+        prePageText: 'Back',
+        nextPageText: 'Next',
+        lastPageText: 'Last',
+        nextPageTitle: 'First page',
+        prePageTitle: 'Pre page',
+        firstPageTitle: 'Next page',
+        lastPageTitle: 'Last page',
+        showTotal: true,
+        paginationTotalRenderer: customTotal, 
+        sizePerPageList: [{
+          text: '10', value: 10
+        }, {
+          text: '25', value: 25
+        }, {
+            text: '50', value: 50
+        }, {
+            text: '100', value: 100
+        }, {
+          text: 'All', value: this.state.data.length
+        }] 
+      };
+
           const contentTable = ({paginationProps, paginationTableProps}) => {
 
             return (
@@ -186,7 +212,7 @@ const columns = [{
 
               <ToolkitProvider
                 keyField='id' 
-                data={salesData}               
+                data={this.state.data}               
                 columns={columns}
                 search 
               >
