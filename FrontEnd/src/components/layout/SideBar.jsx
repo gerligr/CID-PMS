@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './SideBar.css';
 
 export default class SideBar extends React.Component{
 
@@ -9,14 +10,14 @@ export default class SideBar extends React.Component{
 
     render() {
         return (
-            <div className="sidebar" data-color="purple" data-background-color="white" data-image="media/sidebar-2.jpg">
+            <div className="sidebar" data-color="green" data-background-color="white" data-image="media/sidebar-2.jpg" style={{ backgroundImage: `url("media/sidebar-42.jpg")`, backgroundSize: 'cover'}}>
                 <div className="logo">                                         
                     <Link to="/dashboard" className="nav-link simple-text logo-normal">
                         <img src="media/logo2.png" alt="Company logo" height="100" />
                     </Link>                                          
                 </div>
-                <div className="sidebar-wrapper">
-                    <ul className="nav">
+                <div className="sidebar-wrapper" >
+                    <ul className="nav" >
                         <li className="nav-item  ">
                             <Link to="/dashboard" className="nav-link">
                                 <i className="material-icons">home_work</i>
@@ -71,7 +72,7 @@ export default class SideBar extends React.Component{
                                 <p>Support</p>
                             </Link>
                         </li>                                             
-                    </ul>
+                    </ul>                    
                 </div>
           </div>        
             
