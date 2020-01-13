@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import httpsProxyAgent from 'https-proxy-agent';
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
@@ -81,8 +82,27 @@ export default class UserProfilePage extends React.Component{
 
     render() {
         return ( 
+            <div>
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-6">
+                    <div className="card card-profile">
+                        <div className="card-avatar bg-success">
+                            <a href="#pablo">
+                                <img className="img" src="media/eddi.jpg" alt="Employee's picture" />
+                            </a>
+                        </div>
+                        <div className="card-body-success">
+                            <h6 className="card-category text-gray">{this.state.position}</h6>
+                            <h4 className="card-title">{this.state.firstname} {this.state.lastname}</h4>
+                            <p className="card-description">
+                                People and sales is my life, the air I breath.
+                            </p>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-6">
                 <div className="card">
                     <div className="card-header card-header-success">
                     <h4 className="card-title">Employee Profile</h4>
@@ -143,7 +163,8 @@ export default class UserProfilePage extends React.Component{
                     </form>
                     </div>
                 </div>
-                </div>
+                </div>                
+            </div>
             </div>
         );
     }

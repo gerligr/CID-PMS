@@ -4,13 +4,16 @@ import httpsProxyAgent from 'https-proxy-agent';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
+import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone  } from 'react-bootstrap-table2-paginator';
+
+import '@trendmicro/react-modal/dist/react-modal.css';
+import Modal from '@trendmicro/react-modal';
+import '@trendmicro/react-buttons/dist/react-buttons.css';
+import { Button, ButtonGroup, ButtonToolbar } from '@trendmicro/react-buttons';
 
 /* import './SalesPage.css';  */
-
-import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone  } from 'react-bootstrap-table2-paginator';
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
@@ -28,91 +31,7 @@ const selectRow = {
     selected: [1]
 };
 
-const salesDetails = (e)=> {  
-    var { id} = e.target;
-    console.log("See Details for Id: " + id);    
-};
 
-const formatProductDetailsButtonCell =(cell, row)=>{  
-    let clickHandler=salesDetails;
-    var iTag = React.createElement('i',{id:row.id,onClick:clickHandler,className:'material-icons'},'comment');    		
-    var aBtn = React.createElement('a',{id:row.id,className:"nav-link", onClick:clickHandler}, iTag);
-    return aBtn;	
-}
-
-const columns = [{
-    dataField: 'id',
-    text: 'Sales ID',    
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {
-    dataField: 'date',
-    text: 'Date',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {
-    dataField: 'lastname',
-    text: 'Last Name',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {  
-    dataField: 'team',
-    text: 'Team Code',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {  
-    dataField: 'eur_per_h',
-    text: 'Eur/h',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {  
-    dataField: 'pax_per_h',
-    text: 'Pax/h',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {    
-    dataField: 'eur_per_pax',
-    text: 'Eur/pax',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {    
-    dataField: 'calls_per_h',
-    text: 'Calls/h',
-    sort: true,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }, {  
-    dataField: 'action',    
-    text:'Action',
-    formatter: formatProductDetailsButtonCell,
-    headerStyle: {
-      color: 'green',
-      fontWeight: 500  
-    }  
-  }];
 
   const customTotal = (from, to, size) => (
     <span className="react-bootstrap-table-pagination-total">
@@ -154,10 +73,13 @@ const columns = [{
     
     constructor(props) {
         super(props);        
+        this.getData = this.getData.bind(this); 
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);  
         this.state= {
-          data: []        
-      }
-        this.getData = this.getData.bind(this);        
+          data: [],
+          openModal: false        
+        }     
     }
 
     componentDidMount() {
@@ -170,12 +92,103 @@ const columns = [{
           this.setState({data:response.data});
         }).catch((exception) => {
           console.log(exception);
-        });
-    
-    
-  };
+        });    
+    };
+
+    openModal () {
+      this.setState({openModal:true});
+    }
+
+    closeModal () {
+      this.setState({closeModal:false});
+    }
 
     render() {  
+
+   /*    const salesDetails = (e)=> {  
+        var { id} = e.target;
+        console.log("See Details for Id: " + id);    
+    }; */
+    
+    const formatSalesDetailsButtonCell =(cell, row)=>{        
+        var iTag = React.createElement('i',{id:row.id,onClick:this.openModal,className:'material-icons'},'comment');    		
+        var aBtn = React.createElement('a',{id:row.id,className:"nav-link", onClick:this.openModal}, iTag);
+        return aBtn;	
+    }
+    
+    const columns = [{
+        dataField: 'id',
+        text: 'Sales ID',    
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {
+        dataField: 'date',
+        text: 'Date',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {
+        dataField: 'lastname',
+        text: 'Last Name',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {  
+        dataField: 'team',
+        text: 'Team Code',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {  
+        dataField: 'eur_per_h',
+        text: 'Eur/h',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {  
+        dataField: 'pax_per_h',
+        text: 'Pax/h',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {    
+        dataField: 'eur_per_pax',
+        text: 'Eur/pax',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {    
+        dataField: 'calls_per_h',
+        text: 'Calls/h',
+        sort: true,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }, {  
+        dataField: 'action',    
+        text:'Action',
+        formatter: formatSalesDetailsButtonCell,
+        headerStyle: {
+          color: 'green',
+          fontWeight: 500  
+        }  
+      }];
 
       const paginationConfig = {
         custom: true,
@@ -222,6 +235,32 @@ const columns = [{
                     
                     return (
                     <div>
+                      {
+                        this.state.openModal && <Modal size={400} onClose={ this.closeModal}>
+                        <Modal.Header>
+                            <Modal.Title>
+                                Modal Title
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body padding>
+                            Modal Body
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button
+                                btnStyle="primary"
+                                onClick={ this.closeModal}
+                            >
+                                Save
+                            </Button>
+                            <Button
+                                btnStyle="default"
+                                onClick={ this.closeModal}
+                            >
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                      </Modal>}
+
                       <div className="row">
                         <div className="col-sm-8">                          
                         </div>
@@ -234,8 +273,7 @@ const columns = [{
                       <div className="col-md-12">
                         <div className="card">
                           <div className="card-header card-header-success">
-                            <h4 className="card-title ">Daily Sales</h4>
-                            {/* <p className="card-category"> Here is Your daily sales </p> */}
+                            <h4 className="card-title ">Daily Sales</h4>                            
                           </div>     
                           <div className="card-body">
                             <div className="table-responsive">
@@ -275,7 +313,7 @@ const columns = [{
           <div>
             <PaginationProvider pagination={paginationFactory(paginationConfig)} >
                 { contentTable }
-            </PaginationProvider>              
+            </PaginationProvider>                  
           </div>        
       );
   }
