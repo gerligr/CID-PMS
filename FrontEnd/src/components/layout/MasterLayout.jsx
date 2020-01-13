@@ -6,7 +6,7 @@ import DashboardPage from '../pages/DashboardPage.jsx';
 import CustomerFeedback from '../panels/CustomerFeedback';
 import SalesPage from '../pages/SalesPage.jsx';
 import Meetings from '../panels/Meetings';
-import HintsForGrowthPage from '../pages/HintsForGrowth.jsx';
+import SuggestionPage from '../pages/SuggestionPage.jsx';
 import UserProfilePage from '../pages/UserProfilePage.jsx';
 import SignUpUserPage from '../pages/SignUpUserPage.jsx';
 import SignInUserPage from '../pages/SignInUserPage.jsx';
@@ -32,7 +32,7 @@ export default class MasterLayout extends React.Component{
                                 <Route path="/customerfeedback" component={CustomerFeedback} />
                                 <Route path="/sales" component={SalesPage} />
                                 <Route path="/meetings" component={Meetings} />
-                                <Route path="/hints" component={HintsForGrowthPage} />
+                                <Route path="/suggestion" component={SuggestionPage} />
                                 <Route path="/userprofile" component={UserProfilePage} />  
                                 <Route path="/signupuser" component={SignUpUserPage} />
                                 <Route path="/signinuser" component={SignInUserPage} /> 

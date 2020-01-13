@@ -101,16 +101,16 @@ export default class DashboardPage extends React.Component{
                   <div className="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div className="card-body">
-                  <h4 className="card-title">Monthly Euro Sales</h4>
+                  <h4 className="card-title">Weekly Euro Sales</h4>
                   <p className="card-category">
                     <span className="text-success">
                       <i className="fa fa-long-arrow-up"></i> 20% 
-                    </span> increase in monthly euro sales.
+                    </span> increase in weekly euro sales.
                   </p>
                 </div>
                 <div className="card-footer">
                   <div className="stats">
-                    <Link to='/hints'className="text-secondary">
+                    <Link to='/suggestion'className="text-secondary">
                       <i className="material-icons">trending_up</i> Hints
                     </Link>
                   </div>
@@ -119,20 +119,20 @@ export default class DashboardPage extends React.Component{
             </div>
             <div className="col-md-4">
               <div className="card card-chart">
-                <div className="card-header card-header-warning">
+                <div className="card-header card-header-success">
                   <div className="ct-chart" id="websiteViewsChart"></div>
                 </div>
                 <div className="card-body">
-                  <h4 className="card-title">Monthly Extra Sales</h4>
+                  <h4 className="card-title">Weekly Extra Sales</h4>
                   <p className="card-category">
                     <span className="text-success">
                       <i className="fa fa-long-arrow-up"></i> 20% 
-                    </span> increase in monthly extra sales.
+                    </span> increase in weekly extra sales.
                   </p>
                 </div>
                 <div className="card-footer">
                   <div className="stats">
-                    <Link to='/hints'className="text-secondary">
+                    <Link to='/suggestion'className="text-secondary">
                       <i className="material-icons">trending_up</i> Hints
                     </Link>
                   </div>
@@ -141,20 +141,20 @@ export default class DashboardPage extends React.Component{
             </div>
             <div className="col-md-4">
               <div className="card card-chart">
-                <div className="card-header card-header-danger">
+                <div className="card-header card-header-success">
                   <div className="ct-chart" id="completedTasksChart"></div>
                 </div>
                 <div className="card-body">
-                  <h4 className="card-title">Monthly Calls</h4>
+                  <h4 className="card-title">Weekly Calls</h4>
                   <p className="card-category">
                     <span className="text-danger">
                       <i className="fa fa-long-arrow-down"></i> 10% 
-                    </span> decrease in monthly calls.
+                    </span> decrease in weekly calls.
                     </p>
                 </div>
                 <div className="card-footer">
                   <div className="stats">
-                    <Link to='/hints'className="text-secondary">
+                    <Link to='/suggestion'className="text-secondary">
                       <i className="material-icons">trending_up</i> Hints
                     </Link>
                   </div>

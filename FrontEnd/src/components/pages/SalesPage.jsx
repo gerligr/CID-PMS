@@ -31,45 +31,43 @@ const selectRow = {
     selected: [1]
 };
 
+const customTotal = (from, to, size) => (
+  <span className="react-bootstrap-table-pagination-total">
+    Showing {from} to {to} of {size} Results
+  </span>
+);
 
-
-  const customTotal = (from, to, size) => (
-    <span className="react-bootstrap-table-pagination-total">
-      Showing {from} to {to} of {size} Results
-    </span>
-  );
-  
-  const pageButtonRenderer = ({
-    page,
-    active,    
-    onPageChange
-  }) => {
-    const handleClick = (e) => {
-      e.preventDefault();
-      onPageChange(page);
-    };
-    const activeStyle = {};
-    if (active) {
-      activeStyle.backgroundColor = 'green';
-      activeStyle.color = 'white';
-    } else {
-      activeStyle.backgroundColor = '';
-      activeStyle.color = 'green';
-    }
-    if (typeof page === 'string') {
-      activeStyle.backgroundColor = '';
-      activeStyle.color = 'green';
-    }
-    return (
-      <li className="page-link">
-        <a href="#" onClick={ handleClick } style={ activeStyle }>{ page }</a>
-      </li>
-    );
+const pageButtonRenderer = ({
+  page,
+  active,    
+  onPageChange
+}) => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    onPageChange(page);
   };
+  const activeStyle = {};
+  if (active) {
+    activeStyle.backgroundColor = 'green';
+    activeStyle.color = 'white';
+  } else {
+    activeStyle.backgroundColor = '';
+    activeStyle.color = 'green';
+  }
+  if (typeof page === 'string') {
+    activeStyle.backgroundColor = '';
+    activeStyle.color = 'green';
+  }
+  return (
+    <li className="page-link">
+      <a href="#" onClick={ handleClick } style={ activeStyle }>{ page }</a>
+    </li>
+  );
+};
 
  
 
-  export default class SalesPage extends React.Component{  
+export default class SalesPage extends React.Component{  
     
     constructor(props) {
         super(props);        

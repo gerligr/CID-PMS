@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import httpsProxyAgent from 'https-proxy-agent';
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
@@ -15,8 +14,6 @@ const config = {
 const options = {
     headers: {"Content-Type": "application/json","Accept": "application/json" }          
 };
-
-/* import {userDetails} from '.././data/userDetails.js'; */
 
 export default class UserProfilePage extends React.Component{
 

@@ -37,7 +37,7 @@ export default class SideBar extends React.Component{
                             </Link>                        
                         </li>
                         <li className="nav-item  ">
-                            <Link to="/hints" className="nav-link">
+                            <Link to="/suggestion" className="nav-link">
                                 <i className="material-icons">trending_up</i>
                                 <p>Hints for Growth</p>
                             </Link>
