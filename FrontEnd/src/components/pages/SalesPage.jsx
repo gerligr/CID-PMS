@@ -10,8 +10,8 @@ import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePe
 
 import '@trendmicro/react-modal/dist/react-modal.css';
 import Modal from '@trendmicro/react-modal';
-import '@trendmicro/react-buttons/dist/react-buttons.css';
 import { Button, ButtonGroup, ButtonToolbar } from '@trendmicro/react-buttons';
+import '@trendmicro/react-buttons/dist/react-buttons.css';
 
 /* import './SalesPage.css';  */
 
@@ -76,7 +76,7 @@ export default class SalesPage extends React.Component{
         this.closeModal = this.closeModal.bind(this);  
         this.state= {
           data: [],
-          openModal: false        
+          openModal: false                 
         }     
     }
 
@@ -98,7 +98,7 @@ export default class SalesPage extends React.Component{
     }
 
     closeModal () {
-      this.setState({closeModal:false});
+      this.setState({openModal:false});
     }
 
     render() {  

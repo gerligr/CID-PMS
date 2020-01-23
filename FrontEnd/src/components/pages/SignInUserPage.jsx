@@ -50,8 +50,7 @@ export default class SignInUserPage extends React.Component{
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header card-header-success">
-                            <h4 className="card-title">Employee Sign-In</h4>
-                            
+                            <h4 className="card-title">Employee Sign-In</h4>                            
                         </div>
                         <div className="card-body">
                             <form>
