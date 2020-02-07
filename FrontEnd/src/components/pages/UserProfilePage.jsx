@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import httpsProxyAgent from 'https-proxy-agent';
+import '../../config.js'; 
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 const mockoonUrlGet="http://localhost:7000/cid/users/get";
-const mockoonUrlPost="http://localhost:7000/cid/users/create";
+const mockoonUrlPost="http://localhost:8080/rest/user/save";
 
 const config = {
     httpsAgent: agent
@@ -21,9 +22,9 @@ export default class UserProfilePage extends React.Component{
       
         super(props);
         this.state={
-            department: '',
-            team: '',
-            position: '',
+            departmentId: '',
+            teamId: '',
+            roleId: '',
             firstname: '',
             lastname: '',
             username: '',
@@ -40,9 +41,9 @@ export default class UserProfilePage extends React.Component{
     getData() {
         axios.get(mockoonUrlGet, config)
           .then((response) => {            
-            this.setState({ department: response.data.department });
-            this.setState({ team: response.data.team });
-            this.setState({ position: response.data.position });
+            this.setState({ departmentId: response.data.departmentId });
+            this.setState({ teamId: response.data.teamId });
+            this.setState({ roleId: response.data.roleId });
             this.setState({ firstname: response.data.firstname });
             this.setState({ lastname: response.data.lastname });
             this.setState({ username: response.data.username });
@@ -57,16 +58,16 @@ export default class UserProfilePage extends React.Component{
         console.log("axios Post call to send updated state data to Server (Mockoon) ");
         let dataToSend = {
             id: this.state.id,
-            department: this.state.department,
-            team: this.state.team,
-            position: this.state.position,
+            departmentId: this.state.departmentId,
+            teamId: this.state.teamId,
+            roleId: this.state.roleId,
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             username: this.state.username,
             password: this.state.password
         };
 
-        axios.post(mockoonUrlPost, dataToSend, options)
+        axios.post('/user/post', dataToSend, options)
             .then((response) => {
                 console.log('response delivered');
                 console.log(response.data);
@@ -111,19 +112,19 @@ export default class UserProfilePage extends React.Component{
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className="bmd-label-floating">Department</label>
-                                    <input type="text" className="form-control" value={this.state.department} onChange={(e) => this.setState({department: e.target.value})}/>
+                                    <input type="text" className="form-control" value={this.state.departmentId} onChange={(e) => this.setState({departmentId: e.target.value})}/>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className="bmd-label-floating">Team</label>
-                                    <input type="text" className="form-control" value={this.state.team} onChange={(e) => this.setState({team: e.target.value})}/>
+                                    <input type="text" className="form-control" value={this.state.teamId} onChange={(e) => this.setState({teamId: e.target.value})}/>
                                 </div>
                             </div> 
                             <div className="col-md-4">
                                 <div className="form-group">
                                     <label className="bmd-label-floating">Position</label>
-                                    <input type="text" className="form-control" value={this.state.position} onChange={(e) => this.setState({position: e.target.value})}/>
+                                    <input type="text" className="form-control" value={this.state.roleId} onChange={(e) => this.setState({roleId: e.target.value})}/>
                                 </div>
                             </div>                         
                         </div>

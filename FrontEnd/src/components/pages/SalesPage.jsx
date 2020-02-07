@@ -139,7 +139,7 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {  
-        dataField: 'team',
+        dataField: 'team_id',
         text: 'Team Code',
         sort: true,
         headerStyle: {
@@ -147,7 +147,7 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {  
-        dataField: 'eur_per_h',
+        dataField: 'eur_per_hour',
         text: 'Eur/h',
         sort: true,
         headerStyle: {
@@ -155,7 +155,7 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {  
-        dataField: 'pax_per_h',
+        dataField: 'pax_per_hour',
         text: 'Pax/h',
         sort: true,
         headerStyle: {
@@ -171,7 +171,7 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {    
-        dataField: 'calls_per_h',
+        dataField: 'calls_per_hour',
         text: 'Calls/h',
         sort: true,
         headerStyle: {
