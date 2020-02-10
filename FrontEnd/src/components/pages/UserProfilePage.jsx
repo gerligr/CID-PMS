@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import httpsProxyAgent from 'https-proxy-agent';
-import '../../config.js'; 
+import {apiUrl} from '../../config.js'; 
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
 const mockoonUrlGet="http://localhost:7000/cid/users/get";
-const mockoonUrlPost="http://localhost:8080/rest/user/save";
 
 const config = {
     httpsAgent: agent
@@ -21,14 +20,17 @@ export default class UserProfilePage extends React.Component{
     constructor(props) {
       
         super(props);
-        this.state={
-            departmentId: '',
-            teamId: '',
-            roleId: '',
+        this.state={             
             firstname: '',
             lastname: '',
             username: '',
-            password: ''     
+            password: '',
+            team: {
+                id: ''
+            },           
+            role: {
+                id: ''
+            }              
         };
         this.getData = this.getData.bind(this);
         this.sendData = this.sendData.bind(this); 
@@ -41,9 +43,8 @@ export default class UserProfilePage extends React.Component{
     getData() {
         axios.get(mockoonUrlGet, config)
           .then((response) => {            
-            this.setState({ departmentId: response.data.departmentId });
-            this.setState({ teamId: response.data.teamId });
-            this.setState({ roleId: response.data.roleId });
+            this.setState({ role: {id: response.data.role.id }});
+            this.setState({ team: {id: response.data.team.id }});
             this.setState({ firstname: response.data.firstname });
             this.setState({ lastname: response.data.lastname });
             this.setState({ username: response.data.username });
@@ -58,16 +59,15 @@ export default class UserProfilePage extends React.Component{
         console.log("axios Post call to send updated state data to Server (Mockoon) ");
         let dataToSend = {
             id: this.state.id,
-            departmentId: this.state.departmentId,
-            teamId: this.state.teamId,
-            roleId: this.state.roleId,
+            team: {id: this.state.team.id} ,
+            role: {id: this.state.role.id},
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             username: this.state.username,
             password: this.state.password
         };
 
-        axios.post('/user/post', dataToSend, options)
+        axios.post(apiUrl+'/user/save', dataToSend, options)
             .then((response) => {
                 console.log('response delivered');
                 console.log(response.data);
@@ -90,7 +90,7 @@ export default class UserProfilePage extends React.Component{
                             </a>
                         </div>
                         <div className="card-body-success">
-                            <h6 className="card-category text-gray">{this.state.position}</h6>
+                            <h6 className="card-category text-gray">{this.state.role.id}</h6>
                             <h4 className="card-title">{this.state.firstname} {this.state.lastname}</h4>
                             <p className="card-description">
                                 People and sales is my life, the air I breath.
@@ -105,26 +105,20 @@ export default class UserProfilePage extends React.Component{
                     <div className="card-header card-header-success">
                     <h4 className="card-title">Employee Profile</h4>
                     <p className="card-category"></p>
-                    </div>
+                    </div> 
                     <div className="card-body">
                     <form >
                         <div className="row">
-                            <div className="col-md-4">
-                                <div className="form-group">
-                                    <label className="bmd-label-floating">Department</label>
-                                    <input type="text" className="form-control" value={this.state.departmentId} onChange={(e) => this.setState({departmentId: e.target.value})}/>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="form-group">
                                     <label className="bmd-label-floating">Team</label>
-                                    <input type="text" className="form-control" value={this.state.teamId} onChange={(e) => this.setState({teamId: e.target.value})}/>
+                                    <input type="text" className="form-control" value={this.state.team.id} readOnly/>
                                 </div>
                             </div> 
-                            <div className="col-md-4">
+                            <div className="col-md-6">
                                 <div className="form-group">
-                                    <label className="bmd-label-floating">Position</label>
-                                    <input type="text" className="form-control" value={this.state.roleId} onChange={(e) => this.setState({roleId: e.target.value})}/>
+                                    <label className="bmd-label-floating">Role</label>
+                                    <input type="text" className="form-control" value={this.state.role.id} readOnly/>
                                 </div>
                             </div>                         
                         </div>
