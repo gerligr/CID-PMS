@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import httpsProxyAgent from 'https-proxy-agent';
-import {apiUrl} from '../../config.js'; 
+import { apiUrl } from '../../config.js'; 
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
@@ -42,13 +42,13 @@ export default class UserProfilePage extends React.Component{
 
     getData() {
         axios.get(mockoonUrlGet, config)
-          .then((response) => {            
-            this.setState({ role: {id: response.data.role.id }});
-            this.setState({ team: {id: response.data.team.id }});
+          .then((response) => {      
             this.setState({ firstname: response.data.firstname });
             this.setState({ lastname: response.data.lastname });
             this.setState({ username: response.data.username });
-            this.setState({ password: response.data.password });
+            this.setState({ password: response.data.password });            
+            this.setState({ team: {id: response.data.team.id }});
+            this.setState({ role: {id: response.data.role.id }});
             console.log(response.data);
           }).catch((exception) => {
             console.log(exception);
@@ -58,13 +58,13 @@ export default class UserProfilePage extends React.Component{
     sendData(e){
         console.log("axios Post call to send updated state data to Server (Mockoon) ");
         let dataToSend = {
-            id: this.state.id,
-            team: {id: this.state.team.id} ,
-            role: {id: this.state.role.id},
+            id: this.state.id,            
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            team: {id: this.state.team.id},
+            role: {id: this.state.role.id}
         };
 
         axios.post(apiUrl+'/user/save', dataToSend, options)
