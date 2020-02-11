@@ -25,7 +25,7 @@ export default class SignUpUserPage extends React.Component{
                 id:''
             }     
         }
-        this.sendData = this.sendData.bind(this);
+        this.sendData = this.sendData.bind(this);        
     }
 
     componentDidMount() {       
@@ -51,11 +51,26 @@ export default class SignUpUserPage extends React.Component{
                 console.log(response.data);
             }).catch((exception)=>{
                 console.log(exception);
-            });
+            }).then(this.resetForm);            
 
         e.preventDefault();     
                 
     }  
+
+    resetForm = () => {
+        this.setState({ 
+            firstname:'',
+            lastname:'',
+            username:'',
+            password:'',
+            team: {
+                id:''
+            },
+            role: {
+                id:''
+            }       
+        })
+    }    
 
     render() {
         return ( 
@@ -110,7 +125,7 @@ export default class SignUpUserPage extends React.Component{
                                 </div>
                             </div>
                         </div>                        
-                        <button type="submit" className="btn btn-success pull-right" onClick={this.sendData}>Save</button>
+                        <button type="submit" className="btn btn-success pull-right" onClick={this.sendData}>Submit</button>
                         <div className="clearfix"></div>
                     </form>
                     </div>
