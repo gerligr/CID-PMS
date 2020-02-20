@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import httpsProxyAgent from 'https-proxy-agent';
+import { apiUrl } from '../../config.js';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -10,17 +11,19 @@ import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePe
 
 import '@trendmicro/react-modal/dist/react-modal.css';
 import Modal from '@trendmicro/react-modal';
-import { Button, ButtonGroup, ButtonToolbar } from '@trendmicro/react-buttons';
+import { Button } from '@trendmicro/react-buttons';
 import '@trendmicro/react-buttons/dist/react-buttons.css';
-
-/* import './SalesPage.css';  */
 
 const agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
 
-const mockoonUrlGet="http://localhost:7000/cid/sales/get";
+/*const mockoonUrlGet="http://localhost:7000/cid/sales/get";*/
 
 const config = {
   httpsAgent: agent
+};
+
+const options = {
+  headers: {"Content-Type": "application/json","Accept": "application/json"          }          
 };
 
 const {SearchBar} = Search;
@@ -63,35 +66,45 @@ const pageButtonRenderer = ({
       <a href="#" onClick={ handleClick } style={ activeStyle }>{ page }</a>
     </li>
   );
-};
-
- 
+}; 
 
 export default class SalesPage extends React.Component{  
     
     constructor(props) {
-        super(props);        
-        this.getData = this.getData.bind(this); 
+        super(props);       
+        this.sendData = this.sendData.bind(this); 
+        //this.getData = this.getData.bind(this); 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);  
         this.state= {
-          data: [],
-          openModal: false                 
+          userId: '', 
+          openModal: false ,
+          data:[]               
         }     
     }
 
     componentDidMount() {
-      this.getData();
+      this.sendData();
     }
 
-    getData() {
-      axios.get(mockoonUrlGet, config)
-        .then((response) => {         
-          this.setState({data:response.data});
-        }).catch((exception) => {
-          console.log(exception);
-        });    
-    };
+    sendData(){
+      console.log("axios Post call to send data to Server");
+     
+      let data ={
+        'userId': 39 
+      }
+
+      axios.post(apiUrl+'/sales/search', data, options)
+            .then((response) => {     
+              console.log('response delivered');
+              console.log(response.data);    
+              this.setState({data:response.data.data});
+            }).catch((exception) => {
+              console.log(exception);
+            });    
+        
+       // e.preventDefault();  
+    }
 
     openModal () {
       this.setState({openModal:true});
@@ -108,6 +121,9 @@ export default class SalesPage extends React.Component{
         console.log("See Details for Id: " + id);    
     }; */
     
+
+    console.log("IN render ", this.state.data);
+
     const formatSalesDetailsButtonCell =(cell, row)=>{        
         var iTag = React.createElement('i',{id:row.id,onClick:this.openModal,className:'material-icons'},'comment');    		
         var aBtn = React.createElement('a',{id:row.id,className:"nav-link", onClick:this.openModal}, iTag);
@@ -115,14 +131,14 @@ export default class SalesPage extends React.Component{
     }
     
     const columns = [{
-        dataField: 'id',
-        text: 'Sales ID',    
+        dataField: 'user.lastname',
+        text: 'Sales Agent',
         sort: true,
         headerStyle: {
           color: 'green',
           fontWeight: 500  
-        }  
-      }, {
+        }
+    }, {  
         dataField: 'date',
         text: 'Date',
         sort: true,
@@ -131,23 +147,15 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {
-        dataField: 'lastname',
-        text: 'Last Name',
+        dataField: 'week',
+        text: 'Week',
         sort: true,
         headerStyle: {
           color: 'green',
           fontWeight: 500  
         }  
-      }, {  
-        dataField: 'team',
-        text: 'Team Code',
-        sort: true,
-        headerStyle: {
-          color: 'green',
-          fontWeight: 500  
-        }  
-      }, {  
-        dataField: 'eur_per_h',
+      },{  
+        dataField: 'eurPerHour',
         text: 'Eur/h',
         sort: true,
         headerStyle: {
@@ -155,7 +163,7 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {  
-        dataField: 'pax_per_h',
+        dataField: 'paxPerHour',
         text: 'Pax/h',
         sort: true,
         headerStyle: {
@@ -163,7 +171,7 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {    
-        dataField: 'eur_per_pax',
+        dataField: 'eurPerPax',
         text: 'Eur/pax',
         sort: true,
         headerStyle: {
@@ -171,14 +179,14 @@ export default class SalesPage extends React.Component{
           fontWeight: 500  
         }  
       }, {    
-        dataField: 'calls_per_h',
+        dataField: 'callsPerHour',
         text: 'Calls/h',
         sort: true,
         headerStyle: {
           color: 'green',
           fontWeight: 500  
         }  
-      }, {  
+      },  {  
         dataField: 'action',    
         text:'Action',
         formatter: formatSalesDetailsButtonCell,

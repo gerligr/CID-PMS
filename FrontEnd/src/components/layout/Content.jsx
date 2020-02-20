@@ -1,7 +1,4 @@
 import React from 'react';
-import SignIn from '../panels/SignIn';
-import SignUp from '../panels/SignUp';
-
 
 export default class Content extends React.Component{    
 
@@ -14,9 +11,7 @@ export default class Content extends React.Component{
         return (
             <div className="content">
                 <div className="container-fluid">
-                    {/* <SignIn /> */}
-                    {/* <SignUp /> */}              
-                                  
+                    
                 </div>
             </div >
         );
