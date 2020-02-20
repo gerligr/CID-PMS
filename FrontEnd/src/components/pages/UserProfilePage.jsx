@@ -86,7 +86,7 @@ export default class UserProfilePage extends React.Component{
                     <div className="card card-profile">
                         <div className="card-avatar bg-success">
                             <a href="#pablo">
-                                <img className="img" src="media/eddi.jpg" alt="Employee's picture" />
+                                <img className="img" src="media/eddi.jpg" alt="Employee" />
                             </a>
                         </div>
                         <div className="card-body-success">

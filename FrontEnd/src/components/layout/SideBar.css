@@ -2,20 +2,11 @@
     font-weight: 400;
 }
 
-.sidebar .sidebar-wrapper .nav-item a {
-    background: -moz-linear-gradient(top, #D3D3D3 0%, #F8F8F8 100%);
-    background: -webkit-linear-gradient(top, #D3D3D3 0%, #F8F8F8 100%);
-    background: linear-gradient(to bottom, #D3D3D3 0%, #F8F8F8 100%);    
-}
-
-.sidebar .sidebar-wrapper .nav-item a:hover {    
-    background: -moz-linear-gradient(top, #4E9D4E 0%, #E5F1E5 100%);
-    background: -webkit-linear-gradient(top, #4E9D4E 0%, #E5F1E5 100%);
-    background: linear-gradient(to bottom, #4E9D4E 0%, #E5F1E5 100%);    
-}
-
 .nav-item .material-icons {
     font-weight: 550;    
     font-size: 24px;
 }
 
+.is-active {
+    color: red;
+}
