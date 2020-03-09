@@ -79,7 +79,7 @@ export default class SuggestionPage extends React.Component{
         return (
             <div>
                 <div className="row">
-                    <div className="col-lg-8 col-md-6 col-sm-6">
+                    <div className="col-lg-12 col-md-12 col-sm-12">
                         <div className="card card-stats">
                             <div className="card-header card-header-success card-header-icon">
                                 <div className="card-icon">
@@ -100,7 +100,7 @@ export default class SuggestionPage extends React.Component{
                     </div>                    
                 </div>                
                 <div className="row">
-                    <div className="col-lg-8 col-md-6 col-sm-6">
+                    <div className="col-lg-12 col-md-12 col-sm-12">
                         <div className="card card-stats">
                             <div className="card-header card-header-success card-header-icon">
                                 <div className="card-icon">
@@ -121,7 +121,7 @@ export default class SuggestionPage extends React.Component{
                     </div>                    
                 </div>             
                 <div className="row">
-                    <div className="col-lg-8 col-md-6 col-sm-6">
+                    <div className="col-lg-12 col-md-12 col-sm-12">
                         <div className="card card-stats">
                             <div className="card-header card-header-success card-header-icon">
                                 <div className="card-icon">

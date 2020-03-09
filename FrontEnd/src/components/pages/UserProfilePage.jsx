@@ -82,7 +82,7 @@ export default class UserProfilePage extends React.Component{
         return ( 
             <div>
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-12">
                     <div className="card card-profile">
                         <div className="card-avatar bg-success">
                             <a href="#pablo">
@@ -100,7 +100,7 @@ export default class UserProfilePage extends React.Component{
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-12">
                 <div className="card">
                     <div className="card-header card-header-success">
                     <h4 className="card-title">Employee Profile</h4>
