@@ -61,12 +61,12 @@ export default class SideBar extends React.Component{
                                 <p>Users Sign Up</p>
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink to="/signinuser" className="nav-link" activeStyle={{ background: "#55b559", color: "white" }}>
+                        {/*<li className="nav-item">
+                            <NavLink to="/login" className="nav-link" activeStyle={{ background: "#55b559", color: "white" }}>
                                 <i className="material-icons">perm_identity</i>
                                 <p>User Sign In</p>
                             </NavLink>
-                        </li>                        
+                        </li>*/}                   
                         <li className="nav-item">
                             <NavLink to="/support" className="nav-link" activeStyle={{ background: "#55b559", color: "white" }}>
                                 <i className="material-icons">support</i>

@@ -9,39 +9,28 @@ import Meetings from '../panels/Meetings';
 import SuggestionPage from '../pages/SuggestionPage.jsx';
 import UserProfilePage from '../pages/UserProfilePage.jsx';
 import SignUpUserPage from '../pages/SignUpUserPage.jsx';
-import SignInUserPage from '../pages/SignInUserPage.jsx';
 import Support from '../panels/Support';
 
  
-export default class MasterLayout extends React.Component{
-
-    constructor(props) {
-        super(props);
-    }
-    
-    render() {
-        return (
-            <div className="wrapper">
+const MasterLayout = () => (
+        <div className="wrapper">                
                 <SideBar />
                 <div className="main-panel">
                     <TopNavBar />
                     <div className="content">
-                        <div className="container-fluid">
-                            <Switch>
-                                <Route exact path="/dashboard" component={DashboardPage} />
-                                <Route path="/customerfeedback" component={CustomerFeedback} />
-                                <Route path="/sales" component={SalesPage} />
-                                <Route path="/meetings" component={Meetings} />
-                                <Route path="/suggestion" component={SuggestionPage} />
-                                <Route path="/userprofile" component={UserProfilePage} />  
-                                <Route path="/signupuser" component={SignUpUserPage} />
-                                <Route path="/signinuser" component={SignInUserPage} /> 
-                                <Route path="/support" component={Support} />                                
-                            </Switch>
+                        <div className="container-fluid">                                                            
+                            <Route path="/dashboard" component={DashboardPage} />
+                            <Route path="/customerfeedback" component={CustomerFeedback} />
+                            <Route path="/sales" component={SalesPage} />
+                            <Route path="/meetings" component={Meetings} />
+                            <Route path="/suggestion" component={SuggestionPage} />
+                            <Route path="/userprofile" component={UserProfilePage} />  
+                            <Route path="/signupuser" component={SignUpUserPage} />                                
+                            <Route path="/support" component={Support} />                           
                         </div>
                     </div>                    
                 </div>                           
             </div>       
-        );
-    }
-}
+);
+
+export default MasterLayout;
